@@ -6,9 +6,8 @@ from pathlib import Path
 @click.command()
 @click.option('--task', prompt='Task name', help='Task name')
 def create_task(task: str):
-
     template = Path('template')
-    destination = Path(task)
+    destination = Path("problems/" + task)
 
     if destination.exists():
         print('Sorry, this task has already been created')
