@@ -9,6 +9,7 @@
 #include <cstdio>
 
 /*
+ * k: index of element in sorted array to find
  * p: left index
  * r: right index
  * q: pivot index
@@ -17,9 +18,9 @@
  *    that are smaller than pivot from those
  *    that are larger
  */
-void QuickSearch(std::vector<int> &A, int p, int r);
+int QuantileSearch(std::vector<int> &A, int k, int p, int r);
 
-int Partition(std::vector<int> &A, int p, int r);
+int Partition(std::vector<int> &A, int k, int p, int r);
 
 
 #endif //LEETCODE_INTERFACE_H

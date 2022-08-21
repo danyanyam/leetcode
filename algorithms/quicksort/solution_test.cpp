@@ -6,7 +6,7 @@
 
 int main() {
     std::vector<int> test = {4, 5, 5, 2, 8, 1, 1, 11};
-    QuickSort(test, 0, test.size() - 1);
+    QuickSearch(test, 0, test.size() - 1);
 
     for (auto el: test) {
         std::printf("%d ", el);

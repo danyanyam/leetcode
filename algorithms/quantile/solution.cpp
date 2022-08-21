@@ -3,7 +3,7 @@
 //
 #include "interface.h"
 
-int Partition(std::vector<int> &A, int p, int r) {
+int Partition(std::vector<int> &A, int k, int p, int r) {
     /*
      * r: pivot
      * i: index of the wall. Initially, it is pointing
@@ -25,14 +25,19 @@ int Partition(std::vector<int> &A, int p, int r) {
     return i + 1;
 }
 
-void QuickSearch(std::vector<int> &A, int p, int r) {
+int QuantileSearch(std::vector<int> &A, int k, int p, int r) {
 
-    // base size of 1 or 0
-    if (p >= r) return;
+    if (p == r) return A[p];
+    int q = Partition(A, k, p, r);
 
-    int q = Partition(A, p, r);
+    if (q == k)
+        return A[q];
 
-    QuickSearch(A, p, q - 1);
-    QuickSearch(A, q + 1, r);
+    if (q < k)
+        return QuantileSearch(A, k, q + 1, r);
+    else
+        return QuantileSearch(A, k, p, q - 1);
+
 }
+
 

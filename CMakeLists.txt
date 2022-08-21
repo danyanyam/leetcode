@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(leetcode)
 
 # НЕ ДВИГАТЬ СТРОЧКУ!!!!!!!!!!!!!!!!!
-set(PROBLEM_NAME "quicksort")
+set(PROBLEM_NAME "MaxSubArray")
 
 #set(CODE_TYPE "problems")
 set(CodeType "algorithms")
@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Debug)
 set(SOLUTION_SOURCES ${PROJECT_SOURCE_DIR}/${CodeType}/${PROBLEM_NAME}/solution.cpp)
 set(SOLUTION_TEST_SOURCES ${PROJECT_SOURCE_DIR}/${CodeType}/${PROBLEM_NAME}/solution_test.cpp)
+set(SOURCE_FILES ${PROJECT_SOURCE_DIR}/${CodeType}/${PROBLEM_NAME}/interface.h)
 set(UTILS_SOURCES ${PROJECT_SOURCE_DIR}/utils/utils.cpp)
 
 add_library(solution STATIC ${SOLUTION_SOURCES})
