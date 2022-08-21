@@ -43,16 +43,22 @@ int MaxCrossingSubArray(std::vector<int> &A, int p, int q, int r) {
  *     as well as mid-crossing
  *  3. Returns maximum of sum from left sub-arrays, right
  *     and mid-crossing sub-arrays
+ *
+ *  Overall time of execution is given by recurrence
+ *      T(n) = 2T(n/2) + O(n)
+ *  which is same as merge sort and provides T(n) = O(nlog n)
+ *
+ *
  */
 int MaxSubArray(std::vector<int> &A, int p, int r) {
-    if (p >= r) return A[p];
-    int q = static_cast<int>((r + p) / 2);
+    if (p >= r) return A[p];                     // const
+    int q = static_cast<int>((r + p) / 2);       // const
 
-    int L = MaxSubArray(A, p, q - 1);
-    int R = MaxSubArray(A, q + 1, r);
+    int L = MaxSubArray(A, p, q - 1);      // O(n/2)
+    int R = MaxSubArray(A, q + 1, r);      // O(n/2)
 
-    int C = MaxCrossingSubArray(A, p, q, r);
-    return std::max({L, R, C});
+    int C = MaxCrossingSubArray(A, p, q, r);  // O(n)
+    return std::max({L, R, C});                // const
 }
 
 
