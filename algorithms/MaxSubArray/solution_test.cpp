@@ -6,32 +6,29 @@
 #include <gtest/gtest.h>
 
 
-TEST(MaxSubArray, BasicAssertions) {
-    {
-        std::vector<int> data = {1, 2, 3};
-        int right_idx = static_cast<int>(data.size() - 1);
-        int res = MaxSubArray(data,
-                              0,
-                              right_idx);
-        EXPECT_EQ(res, 6);
-    }
-    {
-        std::vector<int> data = {1, 2, 3, -10, 5};
-        int right_idx = static_cast<int>(data.size() - 1);
-        int res = MaxSubArray(data,
-                              0,
-                              right_idx);
-        EXPECT_EQ(res, 6);
-    }
-
-    {
-        std::vector<int> data = {-1, 3, 4, -5, 9, -2};
-        int right_idx = static_cast<int>(data.size() - 1);
-        int res = MaxSubArray(data,
-                              0,
-                              right_idx);
-        EXPECT_EQ(res, 11);
-    }
-
+TEST(MaxSubArray, TestCase1) {
+    std::vector<int> data = {1, 2, 3};
+    int right_idx = static_cast<int>(data.size() - 1);
+    int res = MaxSubArray(data,
+                          0,
+                          right_idx);
+    EXPECT_EQ(res, 6);
 }
 
+TEST(MaxSubArray, TestCase2) {
+    std::vector<int> data = {1, 2, 3, -10, 5};
+    int right_idx = static_cast<int>(data.size() - 1);
+    int res = MaxSubArray(data,
+                          0,
+                          right_idx);
+    EXPECT_EQ(res, 6);
+}
+
+TEST(MaxSubArray, TestCase3) {
+    std::vector<int> data = {-1, 3, 4, -5, 9, -2};
+    int right_idx = static_cast<int>(data.size() - 1);
+    int res = MaxSubArray(data,
+                          0,
+                          right_idx);
+    EXPECT_EQ(res, 11);
+}

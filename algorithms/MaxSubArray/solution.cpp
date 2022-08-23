@@ -33,8 +33,6 @@ int MaxCrossingSubArray(std::vector<int> &A, int p, int q, int r) {
     }
 
     return maxLeftSum + maxRightSum;
-
-
 }
 
 /** divide and conquer algorithm, works as follows:

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(leetcode)
 
 # НЕ ДВИГАТЬ СТРОЧКУ!!!!!!!!!!!!!!!!!
-set(PROBLEM_NAME "MaxSubArray")
+set(PROBLEM_NAME "ActivitySelection")
 
 #set(CODE_TYPE "problems")
 set(CodeType "algorithms")
@@ -17,29 +17,27 @@ set(UTILS_SOURCES ${PROJECT_SOURCE_DIR}/utils/utils.cpp)
 add_library(solution STATIC ${SOLUTION_SOURCES})
 add_library(utils STATIC ${UTILS_SOURCES})
 include_directories(${PROJECT_SOURCE_DIR}/utils)
-
-include(FetchContent)
-FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
-)
+set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/bin;${CMAKE_MODULE_PATH}")
 
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+# Conan settins
+include(${CMAKE_BINARY_DIR}/bin/conanbuildinfo.cmake)
+enable_testing()
+conan_basic_setup()
+
+find_package(GTest)
+find_package(fmt)
 
 enable_testing()
 
 add_executable(
-    solution_test
-    ${SOLUTION_TEST_SOURCES}
+        solution_test
+        ${SOLUTION_TEST_SOURCES}
 )
 target_link_libraries(
-    solution_test
-    solution
-    gtest_main
-    utils
+        solution_test
+        solution
+        utils
+        ${CONAN_LIBS}
 )
 
-include(GoogleTest)
-gtest_discover_tests(solution_test)
